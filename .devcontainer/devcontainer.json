@@ -1,0 +1,36 @@
+{
+    "name": "Terragrunt and OpenTofu DevContainer",
+    "dockerComposeFile": [
+        "docker-compose.yaml"
+    ],
+    "service": "tofu-workspace",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "[yaml]": {
+                    "editor.insertSpaces": true,
+                    "editor.tabSize": 2,
+                    "editor.autoIndent": "advanced",
+                    "diffEditor.ignoreTrimWhitespace": false
+                },
+                "files.eol": "\n",
+                "terminal.integrated.profiles.linux": {
+                    "zsh": {
+                        "path": "/bin/zsh"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "editor.formatOnPaste": false,
+                "editor.formatOnSave": true,
+                "editor.formatOnType": true,
+                "files.trimTrailingWhitespace": true
+            },
+            "extensions": [
+                "gamunu.opentofu"
+            ]
+        }
+    },
+    "postCreateCommand": "terragrunt --version && opentofu --version",
+    "workspaceFolder": "/workspace",
+    "remoteUser": "root"
+}

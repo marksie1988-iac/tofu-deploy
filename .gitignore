@@ -1,0 +1,4 @@
+.env
+pub_key
+.terraform*
+**/tfstate/*
