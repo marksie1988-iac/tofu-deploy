@@ -7,11 +7,11 @@ services:
     container_name: tofu-workspace
     volumes:
       - ..:/workspaces:cached
-      - automation:/automation
+      - automation:/var/automation
     command: sleep infinity
 volumes:
   automation:
     driver_opts:
       type: "nfs"
       o: "addr=172.16.60.2,vers=4,hard,timeo=600"
-      device: ":/automation"
+      device: ":/exports/automation"
