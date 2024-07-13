@@ -21,3 +21,27 @@ module "mp-prx" {
   dns_servers = var.dmz_dns_ip
 
 }
+
+module "pzomboid" {
+  source = "../../_modules/ubuntu-vm"
+  count  = 1
+
+  name        = "pzomboid"
+  description = "Project Zomboid Server"
+
+  node = var.node_name
+
+  ssh_public_key = var.ssh_public_key
+
+  memory      = 16384
+  cpu_sockets = 1
+  cpu_cores   = 4
+  disk_size   = 60
+
+  ip_address  = cidrhost(var.dmz_cidr_block, count.index + 20)
+  gateway     = var.dmz_gateway_ip
+  vlan_id     = 50
+  started     = true
+  dns_servers = var.dmz_dns_ip
+
+}
